@@ -24,38 +24,38 @@ public class StudentController {
     public String findAll(Model model) {
         List<Student> students = studentService.findAll();
         model.addAttribute("students", students);
-        return "view-students";
+        return "student/view";
     }
 
     @GetMapping("/create")
     public String createStudentForm(Model model) {
         model.addAttribute("studentForm", new Student());
-        return "create-student";
+        return "student/create";
     }
 
     @PostMapping("/create")
     public String createStudent(@ModelAttribute("studentForm") @Valid Student student, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "create-student";
+            return "student/create";
         }
         studentService.saveStudent(student);
-            return "redirect:/college/students";
+        return "redirect:/college/students";
     }
 
     @GetMapping("/update/{id}")
     public String updateStudentForm(@PathVariable("id") Long id, Model model) {
         Student student = studentService.findById(id);
         model.addAttribute("student", student);
-        return "update-student";
+        return "student/update";
     }
 
     @PostMapping("/update")
     public String updateStudent(@ModelAttribute("student") @Valid Student student, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
-            return "update-student";
+            return "student/update";
         }
-        studentService.update(student);
+        studentService.updateStudent(student);
         return "redirect:/college/students";
     }
 
