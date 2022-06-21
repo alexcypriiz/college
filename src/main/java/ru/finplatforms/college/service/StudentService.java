@@ -25,8 +25,13 @@ public class StudentService {
         return studentRepository.getOne(id);
     }
 
-    public Student saveClient(Student student) {
+    public Student saveStudent(Student student) {
         return studentRepository.save(student);
+    }
+
+    public void update(Student student) {
+        studentRepository.updateWashOption(student.getId(), student.getFirstName(), student.getLastName(), student.getMiddleName(),
+                student.getBirthday(), student.getNameGroup());
     }
 
     public void delete(Long id) {
