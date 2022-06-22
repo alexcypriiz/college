@@ -42,23 +42,6 @@ public class StudentController {
         return "redirect:/college/students";
     }
 
-    @GetMapping("/update/{id}")
-    public String updateStudentForm(@PathVariable("id") Long id, Model model) {
-        Student student = studentService.findById(id);
-        model.addAttribute("student", student);
-        return "student/update";
-    }
-
-    @PostMapping("/update")
-    public String updateStudent(@ModelAttribute("student") @Valid Student student, BindingResult bindingResult) {
-
-        if (bindingResult.hasErrors()) {
-            return "student/update";
-        }
-        studentService.updateStudent(student);
-        return "redirect:/college/students";
-    }
-
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") Long id) {
         studentService.delete(id);

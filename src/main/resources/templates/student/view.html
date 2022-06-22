@@ -27,7 +27,6 @@
                     <th>Дата рождения</th>
                     <th>Название группы</th>
                     <th></th>
-                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -37,7 +36,6 @@
                     <td th:text="${student.middleName}"></td>
                     <td th:text="${#dates.format(student.birthday, 'dd/MM/yyyy')}"></td>
                     <td th:text="${student.nameGroup}"></td>
-                    <td><a th:href="@{students/update/{id}(id=${student.id})}">Изменить</a></td>
                     <td><a th:href="@{students/delete/{id}(id=${student.id})}">Удалить</a></td>
                 </tr>
                 </tbody>
